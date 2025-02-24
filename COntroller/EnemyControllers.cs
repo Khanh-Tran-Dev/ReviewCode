@@ -9,8 +9,6 @@ namespace SurZom.Controller
 {
     public class EnemyControllers : MonoBehaviour
     {
-        public static EnemyControllers Instance { get; private set; }
-
         [SerializeField] public Transform target;
         [SerializeField] private GameObject targetCircle;
         [SerializeField] private float realSpeed;
@@ -35,16 +33,6 @@ namespace SurZom.Controller
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             vision = GetComponentInChildren<Vision>();
             player = FindObjectOfType<PlayerController>();
             nav = GetComponent<NavMeshAgent>();
